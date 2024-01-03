@@ -7,6 +7,7 @@ from time import sleep
 import auth_keys
 
 driver = webdriver.Firefox()
+driver.maximize_window()
 driver.get('https://www.shortform.com/app/login?redirect=/app/books/list/all?sort=title')
 
 email_field = driver.find_element(By.ID, 'login_email')
@@ -20,8 +21,12 @@ driver.get('https://www.shortform.com/app/books/list/all?sort=title')
 
 #this page is weird, it doesn't have a scroll bar, so we have to scroll down manually
 print('scrolling down')
-sleep(20)
-driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+sleep(15)
+iframe = driver.find_element(By.TAG_NAME, "iframe")
+driver.switch_to.frame(iframe)
+driver.execute_script("arguments[0].setAttribute('scrolling', 'yes')", iframe)
+
+driver.execute_script("window.scrollTo(0, document.body.scrollHeight)")
 print('done scrolling down')
 
 books = driver.find_elements(By.CLASS_NAME, 'books__item')

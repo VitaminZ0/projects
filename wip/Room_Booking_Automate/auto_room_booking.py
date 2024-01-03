@@ -12,9 +12,9 @@ sleep(1)
 
 while True:
     try:
-        driver.find_element(By.CSS_SELECTOR,'[title="12:00pm Friday, September 1, 2023 - Room 452 - Available"]').click()
+        driver.find_element(By.CSS_SELECTOR,'[title="9:00am Wednesday, December 13, 2023 - Room 554 - Available"]').click()
         driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-        driver.find_element(By.CSS_SELECTOR, '[value="2023-09-01 14:00:00"]').click()
+        driver.find_element(By.CSS_SELECTOR, '[value="2023-12-13 10:00:00"]').click()
         driver.find_element(By.ID, "submit_times").click()
         sleep(1)
         break
@@ -32,6 +32,6 @@ sleep(1)
 
 driver.find_element(By.ID, "btn-form-submit").click()
 
-sleep(180)
+
 
 driver.quit()
